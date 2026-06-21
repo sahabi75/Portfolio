@@ -1,242 +1,653 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sahabi Mukul | ML/AI Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sahabi Mukul — AI Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0f1e;
+  --card:#111827;
+  --card2:#1a2235;
+  --blue:#4f8ef7;
+  --blue2:#3b74e0;
+  --white:#ffffff;
+  --grey:#8892a4;
+  --border:#1e2d45;
+  --heading:'Space Grotesk',sans-serif;
+  --body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,15,30,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--heading);font-size:1.2rem;font-weight:700;color:var(--white);text-decoration:none;letter-spacing:-0.5px}
+.nav-logo span{color:var(--blue)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--grey);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.2s;letter-spacing:0.3px}
+.nav-links a:hover{color:var(--white)}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding:120px 60px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 50%,rgba(79,142,247,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(79,142,247,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,0.03) 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
+.hero-content{max-width:700px;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(79,142,247,0.1);border:1px solid rgba(79,142,247,0.25);border-radius:100px;padding:6px 16px;font-size:0.8rem;color:var(--blue);font-weight:500;margin-bottom:28px;letter-spacing:0.5px}
+.hero-tag::before{content:'';width:7px;height:7px;background:var(--blue);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-content h1{font-family:var(--heading);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:700;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px}
+.hero-content h1 span{color:var(--blue)}
+.typing-wrap{font-family:var(--heading);font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:500;color:var(--grey);margin-bottom:24px;height:36px}
+#typed{color:var(--blue)}
+.cursor{color:var(--blue);animation:blink 0.9s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-desc{font-size:1rem;color:var(--grey);max-width:520px;line-height:1.75;margin-bottom:40px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:var(--white);padding:13px 28px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:background 0.2s,transform 0.2s}
+.btn-primary:hover{background:var(--blue2);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--white);padding:13px 28px;border-radius:8px;text-decoration:none;font-weight:500;font-size:0.9rem;transition:border-color 0.2s,transform 0.2s}
+.btn-outline:hover{border-color:var(--blue);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:40px;margin-top:56px;padding-top:40px;border-top:1px solid var(--border)}
+.stat-num{font-family:var(--heading);font-size:1.8rem;font-weight:700;color:var(--white)}
+.stat-label{font-size:0.8rem;color:var(--grey);margin-top:2px}
+
+/* ── SECTIONS ── */
+section{padding:90px 60px}
+.section-tag{font-size:0.78rem;font-weight:600;color:var(--blue);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.section-title{font-family:var(--heading);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.8px;margin-bottom:16px}
+.section-sub{color:var(--grey);font-size:0.95rem;max-width:520px;line-height:1.7;margin-bottom:52px}
+.divider{width:40px;height:3px;background:var(--blue);border-radius:2px;margin-bottom:48px}
+
+/* ── ABOUT ── */
+#about{background:var(--card)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-text p{color:var(--grey);font-size:0.95rem;line-height:1.8;margin-bottom:16px}
+.about-text p strong{color:var(--white)}
+.about-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.about-card{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:border-color 0.2s,transform 0.2s}
+.about-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.about-card-icon{font-size:1.8rem;margin-bottom:10px}
+.about-card-num{font-family:var(--heading);font-size:1.6rem;font-weight:700;color:var(--blue)}
+.about-card-label{font-size:0.78rem;color:var(--grey);margin-top:4px}
+
+/* ── SKILLS ── */
+#skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px;transition:border-color 0.2s,transform 0.2s}
+.skill-card:hover{border-color:var(--blue);transform:translateY(-4px)}
+.skill-card-header{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.skill-icon{width:40px;height:40px;background:rgba(79,142,247,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.skill-card-title{font-family:var(--heading);font-size:0.95rem;font-weight:600}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.15);color:var(--grey);font-size:0.75rem;padding:4px 10px;border-radius:100px;font-weight:500;transition:color 0.2s,border-color 0.2s}
+.tag:hover{color:var(--blue);border-color:var(--blue)}
+
+/* ── PROJECTS ── */
+#projects{
+  background:var(--card);
+}
+
+/* ✅ FIXED: 2 projects per row on desktop */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:24px;
+}
+
+/* Project Card */
+.project-card{
+  background:var(--card2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:30px;
+  transition:border-color 0.2s, transform 0.2s;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Hover effect */
+.project-card:hover{
+  border-color:var(--blue);
+  transform:translateY(-5px);
+}
+
+/* Featured project spans full width */
+.project-card.featured{
+  border-color:rgba(79,142,247,0.3);
+  grid-column:1/-1;
+}
+
+/* Featured badge */
+.featured-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(79,142,247,0.1);
+  border:1px solid rgba(79,142,247,0.25);
+  color:var(--blue);
+  font-size:0.72rem;
+  font-weight:600;
+  padding:4px 12px;
+  border-radius:100px;
+  margin-bottom:16px;
+  letter-spacing:0.5px;
+}
+
+/* Title */
+.project-title{
+  font-family:var(--heading);
+  font-size:1.05rem;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+/* Description */
+.project-desc{
+  color:var(--grey);
+  font-size:0.88rem;
+  line-height:1.7;
+  margin-bottom:18px;
+  flex:1;
+}
+
+/* Stack tags */
+.project-stack{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-bottom:22px;
+}
+
+/* Links */
+.project-links{
+  display:flex;
+  gap:12px;
+}
+
+.proj-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:0.82rem;
+  font-weight:600;
+  color:var(--blue);
+  text-decoration:none;
+  transition:opacity 0.2s;
+}
+
+.proj-link:hover{
+  opacity:0.75;
+}
+
+.proj-link-gh{
+  color:var(--grey);
+}
+
+.proj-link-gh:hover{
+  color:var(--white);
+}
+
+/* ✅ Responsive: stack on mobile */
+@media (max-width: 900px){
+  .projects-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--bg)}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:44px}
+.timeline-dot{position:absolute;left:-34px;top:6px;width:13px;height:13px;background:var(--blue);border-radius:50%;border:2px solid var(--bg)}
+.timeline-date{font-size:0.78rem;color:var(--blue);font-weight:600;letter-spacing:0.5px;margin-bottom:6px;text-transform:uppercase}
+.timeline-title{font-family:var(--heading);font-size:1.05rem;font-weight:700;margin-bottom:4px}
+.timeline-company{font-size:0.88rem;color:var(--grey);margin-bottom:14px}
+.timeline-bullets{list-style:none;display:flex;flex-direction:column;gap:7px}
+.timeline-bullets li{color:var(--grey);font-size:0.88rem;line-height:1.65;padding-left:14px;position:relative}
+.timeline-bullets li::before{content:'→';position:absolute;left:0;color:var(--blue);font-size:0.75rem}
+
+/* ── CONTACT ── */
+#contact{background:var(--card);text-align:center}
+.contact-inner{max-width:560px;margin:0 auto}
+.contact-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-top:36px}
+.contact-link{display:inline-flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--border);color:var(--white);padding:13px 24px;border-radius:10px;text-decoration:none;font-size:0.9rem;font-weight:500;transition:border-color 0.2s,transform 0.2s}
+.contact-link:hover{border-color:var(--blue);transform:translateY(-3px)}
+.contact-link span{font-size:1.1rem}
+
+/* ── FOOTER ── */
+footer{padding:28px 60px;border-top:1px solid var(--border);text-align:center;color:var(--grey);font-size:0.82rem;background:var(--bg)}
+
+/* ── FADE IN ── */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:16px 24px}
+  .nav-links{display:none}
+  #hero{padding:100px 24px 60px}
+  section{padding:60px 24px}
+  .about-grid{grid-template-columns:1fr}
+  .hero-stats{gap:24px}
+  footer{padding:24px}
+}
+</style>
 </head>
 <body>
-  <header class="header">
-    <nav class="navbar container">
-      <h2 class="logo">Sahabi<span>Mukul</span></h2>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
 
-    <section class="hero container">
-      <div class="hero-text">
-        <p class="tag">ML / AI Engineer</p>
-        <h1>Hello, I'm <span>Sahabi Mukul</span></h1>
-        <p class="hero-description">
-          AI Engineer specializing in machine learning, LLM-based applications, and intelligent automation.
-          I build and deploy scalable AI systems, create workflow automations using tools like n8n, and develop data-driven solutions that solve real-world problems.
-        </p>
-        <div class="hero-buttons">
-          <a href="https://github.com/sahabi75" target="_blank" class="btn primary">GitHub</a>
-          <a href="#projects" class="btn secondary">View Projects</a>
-        </div>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">SM<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      Available for opportunities
+    </div>
+    <h1>Hi, I'm <span>Sahabi Mukul</span></h1>
+    <div class="typing-wrap">
+      I build <span id="typed"></span><span class="cursor">|</span>
+    </div>
+    <p class="hero-desc">
+      Fresh CSE graduate from Daffodil International University, passionate about building
+      intelligent AI systems. I specialize in multi-agent architectures, RAG pipelines,
+      and deploying end-to-end AI applications.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View My Work →</a>
+      <a href="https://github.com/sahabi75" target="_blank" class="btn-outline">GitHub ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">6+</div>
+        <div class="stat-label">AI Projects Built</div>
       </div>
-
-      <div class="hero-card">
-        <h3>Quick Info</h3>
-        <ul>
-          <li><strong>Role:</strong> ML / AI Engineer</li>
-          <li><strong>Location:</strong> Wireless Gate, Mohakhali, Dhaka</li>
-          <li><strong>Focus:</strong> ML, Deep Learning, NLP, Computer Vision, AI, AI Automation, 
-          LLM, RAG, n8n</li>
-          <li><strong>Email:</strong> sahabisafin11@gmail.com</li>
-        </ul>
+      <div>
+        <div class="stat-num">4</div>
+        <div class="stat-label">AI Frameworks</div>
       </div>
-    </section>
-  </header>
+      <div>
+        <div class="stat-num">3.39</div>
+        <div class="stat-label">CGPA at DIU</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <main>
-    <section id="about" class="section container">
-      <div class="section-title">
-        <p>About Me</p>
-        <h2>Who I Am</h2>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-tag fade-in">About Me</div>
+  <div class="section-title fade-in">Who I Am</div>
+  <div class="divider fade-in"></div>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>I'm <strong>Sahabi Mukul</strong>, an AI Engineer based in <strong>Dhaka, Bangladesh</strong>. I recently graduated with a BSc in Computer Science and Engineering from Daffodil International University.</p>
+      <p>My passion is building <strong>agentic AI systems</strong> — systems where multiple AI agents collaborate to solve real-world problems automatically. I love the challenge of connecting language models, search APIs, and backend infrastructure into one seamless pipeline.</p>
+      <p>Currently interning as a <strong>Backend AI Engineer at FlyRank (USA)</strong>, I'm gaining real-world experience building production AI systems for an international team.</p>
+      <p>When I'm not coding I'm exploring new AI research, contributing to open-source, and helping others learn AI engineering from scratch.</p>
+    </div>
+    <div class="about-cards fade-in">
+      <div class="about-card">
+        <div class="about-card-icon">🤖</div>
+        <div class="about-card-num">4</div>
+        <div class="about-card-label">Agent Systems Built</div>
       </div>
       <div class="about-card">
-        <p>
-          I am a Machine Learning and AI Engineer focused on building end-to-end 
-          intelligent systems—from data processing and model development to deployment 
-          and automation. My expertise includes working with machine learning algorithms, 
-          deep learning frameworks, and large language models (LLMs) to create scalable 
-          AI-powered applications.
-        </p>
-        <p>
-          I design and implement automation pipelines using tools like n8n, integrating APIs,
-          databases, and AI services to streamline workflows and reduce manual intervention.
-          I also have hands-on experience deploying ML models using modern tools and frameworks,
-          ensuring they are production-ready and efficient.
-        </p>
-        <p>
-          My work combines technical depth with practical application, enabling me to develop AI solutions 
-          that are not only accurate but also usable and impactful in real-world environments.
-        </p>
+        <div class="about-card-icon">🔗</div>
+        <div class="about-card-num">10+</div>
+        <div class="about-card-label">APIs Integrated</div>
       </div>
-    </section>
-
-    <section id="skills" class="section container">
-      <div class="section-title">
-        <p>Skills</p>
-        <h2>Technologies I Work With</h2>
+      <div class="about-card">
+        <div class="about-card-icon">🚀</div>
+        <div class="about-card-num">6+</div>
+        <div class="about-card-label">Projects Deployed</div>
       </div>
-
-      <div class="skills-grid">
-        <div class="skill-box">
-          <h3>Programming</h3>
-          <p>Python, C, C++, HTML, CSS, JavaScript</p>
-        </div>
-
-        <div class="skill-box">
-          <h3>Machine Learning</h3>
-          <p>Data Cleaning, Feature Engineering, Model Evaluation, SHAP, Basic LLM, Deep Learning</p>
-        </div>
-
-        <div class="skill-box">
-          <h3>Libraries & Frameworks</h3>
-          <p>PyTorch, Pandas, NumPy, Scikit-learn, TensorFlow, Matplotlib, Streamlit</p>
-        </div>
-
-        <div class="skill-box">
-          <h3>Tools & Database</h3>
-          <p>MySQL, REST API Design, n8n, Excel, Word, PowerPoint</p>
-        </div>
+      <div class="about-card">
+        <div class="about-card-icon">🌍</div>
+        <div class="about-card-num">1</div>
+        <div class="about-card-label">International Internship</div>
       </div>
-    </section>
-
-    <section id="projects" class="section container">
-      <div class="section-title">
-        <p>Portfolio</p>
-        <h2>Featured Projects</h2>
-      </div>
-
-      <div class="projects-grid">
-        <article class="project-card">
-          <h3>Football Players Performance Prediction</h3>
-          <p>
-            Built machine learning models to predict football player performance
-            using match, GPS, and physiological data. Applied SHAP, R², RMSE,
-            and learning curves for model interpretation.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/sahabi75/Football-Players-Performance-Prediction" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <h3>Environmental Risk Factors Affecting Dengue Cases</h3>
-          <p>
-            Performed predictive analysis on student survey data to assess
-            dengue risk based on living and environmental conditions using
-            machine learning and visualization.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/sahabi75/Environmental-Risk-Factors-Affecting-the-Dengue-Infected-Cases-" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <h3>Financial Inventory Management</h3>
-          <p>
-            Developed a web-based financial management platform with expense
-            tracking, SQL-backed data storage, and a user-friendly responsive
-            interface.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/sahabi75/Financial-Inventory" target="_blank">GitHub</a>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <h3>Gym Management System</h3>
-          <p>
-            Created a web interface for gym member and activity management with
-            structured data handling, responsive layout, and usability-focused
-            design.
-          </p>
-          <div class="project-links">
-            <a href="https://sahabi75.github.io/GYM-webpage/" target="_blank">GitHub</a>
-          </div>
-        </article>
-        <article class="project-card">
-          <h3>AI FAQ Chatbot</h3>
-          <p>
-            Developed an AI-powered FAQ chatbot designed to automate customer support and 
-            streamline lead collection using n8n and Gemini. The system dynamically
-            retrieves answers from a Google Sheets-based knowledge base, enabling efficient and
-            up-to-date responses to user queries.
-
-            To enhance usability, a fallback mechanism was implemented to handle unanswered questions
-            by capturing user details, including mobile numbers, for follow-up communication. This
-            ensures no customer query is lost and supports effective lead generation.
-
-            The chatbot leverages webhook-based real-time communication, structured prompt engineering,
-            and workflow automation to deliver accurate, context-aware responses. This project
-            demonstrates the integration of LLMs, automation pipelines, and data-driven systems
-            to build scalable and practical AI solutions for real-world applications.
-          </p>
-          <div class="project-links">
-            <a href="https://github.com/sahabi75/Chatbot" target="_blank">GitHub</a>
-          </div>
-          <div class="project-links">
-            <a href="https://sahabi.app.n8n.cloud/webhook/5047550c-a28d-47fe-8bf7-befea7de243b/chat" target="_blank">Live Demo</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="education" class="section container">
-      <div class="section-title">
-        <p>Education</p>
-        <h2>Academic Background</h2>
-      </div>
-
-      <div class="edu-card">
-        <h3>Daffodil International University (DIU)</h3>
-        <p>Bachelor of Computer Science and Engineering</p>
-        <span>2022 - 2025 | GPA: 3.40</span>
-      </div>
-    </section>
-
-    <section class="section container">
-      <div class="section-title">
-        <p>Certifications & Achievements</p>
-        <h2>Highlights</h2>
-      </div>
-
-      <div class="achievements">
-        <span>Data Science Certification (Ostad)</span>
-        <span>Computer Visionary (DIU)</span>
-        <span>Datathon - DIU CPC</span>
-        <span>Take-Off Programming Contest</span>
-        <span>Unlock the Algorithm Contest</span>
-        <span>Digital Marketing (E-shikhon)</span>
-      </div>
-    </section>
-
-    <section id="contact" class="section container">
-      <div class="section-title">
-        <p>Contact</p>
-        <h2>Let's Connect</h2>
-      </div>
-
-      <div class="contact-card">
-        <p><strong>Email:</strong> <a href="mailto:sahabisafin11@gmail.com">sahabisafin11@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:+8801731938481">01731938481</a></p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/sahabi75" target="_blank">github.com/sahabi75</a></p>
-        <p><strong>Location:</strong> Mohakhali, Dhaka</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 Sahabi Mukul. All rights reserved.</p>
     </div>
-  </footer>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-tag fade-in">Technical Skills</div>
+  <div class="section-title fade-in">What I Work With</div>
+  <div class="divider fade-in"></div>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-card-header">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-card-title">LLMs & Generative AI</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">LLM Fine-tuning</span>
+        <span class="tag">Embeddings</span>
+        <span class="tag">Transformers</span>
+        <span class="tag">Function Calling</span>
+        <span class="tag">Tokenization</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-card-header">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-card-title">Agentic AI Systems</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">LangGraph</span>
+        <span class="tag">LangChain</span>
+        <span class="tag">CrewAI</span>
+        <span class="tag">AutoGen</span>
+        <span class="tag">Multi-Agent Orchestration</span>
+        <span class="tag">ReAct Reasoning</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-card-header">
+        <div class="skill-icon">📚</div>
+        <div class="skill-card-title">RAG & Vector Databases</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">ChromaDB</span>
+        <span class="tag">LlamaIndex</span>
+        <span class="tag">Semantic Search</span>
+        <span class="tag">Document Chunking</span>
+        <span class="tag">Vector Embeddings</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-card-header">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-card-title">Backend & APIs</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">FastAPI</span>
+        <span class="tag">REST APIs</span>
+        <span class="tag">n8n Automation</span>
+        <span class="tag">Webhook Pipelines</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-card-header">
+        <div class="skill-icon">🚀</div>
+        <div class="skill-card-title">Deployment & Tools</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Streamlit</span>
+        <span class="tag">Hugging Face</span>
+        <span class="tag">GitHub Codespaces</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Git</span>
+      </div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-card-header">
+        <div class="skill-icon">📊</div>
+        <div class="skill-card-title">ML & Data Science</div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">SHAP</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Feature Engineering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+
+
+<!-- PROJECTS -->
+<section id="projects">
+
+  <div class="projects-grid">
+
+    <!-- FEATURED -->
+    <div class="project-card featured fade-in">
+      <div class="featured-badge">⭐ Featured Project</div>
+      <div class="project-title">Multi-Agent AI Research Assistant</div>
+      <div class="project-desc">A fully automated research system powered by 4 specialized AI agents :Planner, Searcher, Summarizer and Reporter which orchestrated by LangGraph. Ask any question and get a full research report in under 60 seconds. Features a ChatGPT-style interface with saved sessions, chat history, and report download.</div>
+
+      <div class="project-stack">
+        <span class="tag">LangGraph</span>
+        <span class="tag">Groq AI</span>
+        <span class="tag">Tavily Search</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Python</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://multi-agent-research-agent-jmn3bwaxgqfnkp8fburm97.streamlit.app/" target="_blank" class="proj-link">Live Project 🚀</a>
+        <a href="https://github.com/sahabi75/Multi-Agent-Research-Agent" target="_blank" class="proj-link proj-link-gh">GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project-card fade-in">
+      <div class="project-title">PDF Chatting AI : RAG Document QA</div>
+      <div class="project-desc">
+        Upload any PDF and chat with it using natural language. Built on a full RAG pipeline with ChromaDB vector storage, semantic retrieval, and conversational memory for multi-turn Q&A sessions.
+      </div>
+      <div class="project-stack">
+        <span class="tag">LangChain</span>
+        <span class="tag">ChromaDB</span>
+        <span class="tag">LlamaIndex</span>
+        <span class="tag">OpenAI API</span>
+        <span class="tag">Streamlit</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://pdf-chatting-ai-d5xpnqbrockgeenxmsorj9.streamlit.app/" target="_blank" class="proj-link">Live Project 🚀</a>
+        <a href="https://github.com/sahabi75/PDF-chatting-AI" target="_blank" class="proj-link">GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="project-card fade-in">
+      <div class="project-title">AI-Powered Telegram Chatbot</div>
+      <div class="project-desc">
+        Real-time conversational AI agent on Telegram with persistent memory, ReAct-style reasoning loop, and tool integration. Built with n8n automation and Google Gemini on a scalable webhook pipeline.
+      </div>
+
+      <div class="project-stack">
+        <span class="tag">n8n</span>
+        <span class="tag">Google Gemini</span>
+        <span class="tag">Telegram API</span>
+        <span class="tag">ReAct</span>
+        <span class="tag">Memory</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://github.com/sahabi75/Telegram-Bot" target="_blank" class="proj-link">GitHub ↗</a>
+      </div>
+    </div> <!-- ✅ FIXED: closing missing before -->
+
+    <!-- PROJECT 4 -->
+    <div class="project-card fade-in">
+      <div class="project-title">A FAQ personalized Chatbot</div>
+      <div class="project-desc">
+        Context aware FAQ chatbot with automated lead capture. Uses Google Sheets as a live knowledge base, enabling zero-downtime updates. Full agentic pipeline with error handling and data routing.
+      </div>
+
+      <div class="project-stack">
+        <span class="tag">n8n</span>
+        <span class="tag">OpenAI</span>
+        <span class="tag">Google Sheets</span>
+        <span class="tag">Prompt Engineering</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://github.com/sahabi75/A-FAQ-personalized-Chatbot" target="_blank" class="proj-link">GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 5 -->
+    <div class="project-card fade-in">
+      <div class="project-title">Football Player Performance Predictor</div>
+      <div class="project-desc">
+        ML regression system predicting football player performance using Scikit-learn. Includes SHAP explainability for transparent model decisions, deployed as an interactive Streamlit web app.
+      </div>
+
+      <div class="project-stack">
+        <span class="tag">Python</span>
+        <span class="tag">ML Models</span>
+        <span class="tag">Regression</span>
+        <span class="tag">Explainability</span>
+        <span class="tag">Data Science</span>
+        <span class="tag">Data Visualization</span>
+        <span class="tag">Matplotlib</span>
+        <span class="tag">Seaborn</span>
+        <span class="tag">NumPy</span>
+        <span class="tag">Scikit-learn</span>
+        <span class="tag">SHAP</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Pandas</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://football-players-performance-prediction-cruk2wm4z9nvmzrafccjqx.streamlit.app/" target="_blank" class="proj-link">Live Project 🚀</a>
+        <a href="https://github.com/sahabi75/Football-Players-Performance-Prediction" target="_blank" class="proj-link">GitHub ↗</a>
+      </div>
+    </div>
+
+    <!-- PROJECT 6 -->
+    <div class="project-card fade-in">
+      <div class="project-title">Financial Inventory</div>
+      <div class="project-desc">
+        A comprehensive financial inventory management system built with modern web technologies. In this project, I implemented a robust backend with real-time data synchronization and a user-friendly frontend for seamless inventory tracking. You calculate your expense and savings in this application.
+      </div>
+
+      <div class="project-stack">
+        <span class="tag">HTML</span>
+        <span class="tag">CSS</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">PHP</span>
+        <span class="tag">MySQL</span>
+      </div>
+
+      <div class="project-links">
+        <a href="https://github.com/sahabi75/Financial-Inventory" target="_blank" class="proj-link">GitHub ↗</a>
+      </div>
+    </div>
+
+  </div> <!-- ✅ FIXED: projects-grid closed properly -->
+
+</section>
+
+</body>
+</html>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-tag fade-in">Experience & Education</div>
+  <div class="section-title fade-in">My Journey</div>
+  <div class="divider fade-in"></div>
+  <div class="timeline">
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">July 2026 — Present</div>
+      <div class="timeline-title">Backend AI Engineer Intern</div>
+      <div class="timeline-company">FlyRank · Remote, USA</div>
+      <ul class="timeline-bullets">
+        <li>Building and deploying AI-powered backend systems on the Backend AI Engineering track.</li>
+        <li>Developing intelligent REST API pipelines integrating large language models for production use cases.</li>
+        <li>Collaborating with an international engineering team on scalable cloud-based AI infrastructure.</li>
+      </ul>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2022 — 2025</div>
+      <div class="timeline-title">BSc in Computer Science and Engineering</div>
+      <div class="timeline-company">Daffodil International University · CGPA: 3.39 / 4.00</div>
+      <ul class="timeline-bullets">
+        <li>Specialized in AI, Machine Learning, and Agentic Systems.</li>
+        <li>Built 6+ real-world AI projects across LLMs, RAG, and multi-agent systems.</li>
+        <li>Completed certifications in Generative AI, Data Science, and Agentic AI Engineering.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-tag fade-in" style="text-align:center">Contact</div>
+    <div class="section-title fade-in">Let's Work Together</div>
+    <div class="divider fade-in" style="margin:0 auto 24px"></div>
+    <p class="fade-in" style="color:var(--grey);font-size:0.95rem;line-height:1.75">
+      I'm actively looking for AI Engineer roles — local in Bangladesh or remote internationally.
+      If you're building something interesting with AI, let's talk.
+    </p>
+    <div class="contact-links fade-in">
+      <a href="mailto:sahabisafin11@gmail.com" class="contact-link"><span>✉️</span> sahabisafin11@gmail.com</a>
+      <a href="https://github.com/sahabi75" target="_blank" class="contact-link"><span>🐙</span> GitHub</a>
+      <a href="https://www.linkedin.com/in/sahabi-mukul-b9585521b/" target="_blank" class="contact-link"><span>💼</span> LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built by Sahabi Mukul · 2026</p>
+</footer>
+
+<script>
+// ── TYPING EFFECT ──
+const roles = [
+  "Multi-Agent AI Systems",
+  "RAG Pipelines",
+  "LangGraph Applications",
+  "FastAPI Backends",
+  "AI Chatbots"
+];
+let ri = 0, ci = 0, deleting = false;
+const el = document.getElementById("typed");
+
+function type() {
+  const word = roles[ri];
+  if (!deleting) {
+    el.textContent = word.slice(0, ++ci);
+    if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+  } else {
+    el.textContent = word.slice(0, --ci);
+    if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; }
+  }
+  setTimeout(type, deleting ? 55 : 90);
+}
+type();
+
+// ── FADE IN ON SCROLL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add("visible"); });
+}, { threshold: 0.1 });
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
